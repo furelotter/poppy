@@ -19,7 +19,7 @@ unsupervised specialization targeted solely at maximizing the performance of the
 
 <p align="center">
     <a href="img/tsp.gif">
-        <img src="img/tsp.gif"width="50%"/>
+        <img src="img/tsp.gif" width="100%"/>
     </a>
 </p>
 
