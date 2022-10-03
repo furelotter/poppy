@@ -21,6 +21,7 @@ unsupervised specialization targeted solely at maximizing the performance of the
     <a href="img/tsp.gif">
         <img src="img/tsp.gif" width="100%"/>
     </a>
+    <i>Figure 1: A diverse set of TSP solvers taking different routes in a given instance.</i>    
 </p>
 
 ## Getting Started
