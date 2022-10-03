@@ -7,7 +7,7 @@ Optimization Problems](LINK).
 
 ---
 
-## Overview
+## Overview :hibiscus:
 Though applying reinforcement learning to combinatorial optimization is attractive, it is unrealistic to expect an agent 
 to solve these (often NP-)hard problems in a single shot due to their inherent complexity.
 Poppy is a method that uses a _population_ of agents with suitably diverse policies to improve the exploration of the
@@ -24,7 +24,7 @@ unsupervised specialization targeted solely at maximizing the performance of the
     <i>Figure 1: A diverse set of TSP solvers taking different routes in a given instance.</i>    
 </p>
 
-## Getting Started
+## Getting Started :rocket:
 ### Installation
 _The test datasets are stored using [Git LFS](https://git-lfs.github.com/). Before cloning the repository, make sure 
 you have it installed. If you have already cloned it and need access to the evaluation files, run `git lfs fetch`._
@@ -52,7 +52,7 @@ sudo docker kill poppy_container
 
 _Note that the command for building the Docker image changes depending on the hardware being used (CPU, GPU or TPU)._
 
-### Training
+### Training 
 The models can be trained using the `experiments/run_training.py` script by executing:
 ```shell
 python experiments/run_training.py <config>
@@ -162,11 +162,11 @@ python experiments/run_sampling.py <env> <problem_size> <pop_size> <model_path>
 ```
 where the parameters are like those for the greedy evaluation.
 
-## Reference
+## Reference :pencil2:
 If you find this repository useful in your work, please use the following citation:
 ```
 ADD CITATION TO THE PAPER HERE
 ```
 
-## Acknowledgements
+## Acknowledgements :pray:
 This research has been supported with TPUs from Google's TPU Research Cloud (TRC).
