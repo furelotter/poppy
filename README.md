@@ -17,6 +17,11 @@ solution space of hard _combinatorial optimization_ problems, such as
 [Knapsack](https://en.wikipedia.org/wiki/Knapsack_problem). To this end, it uses a new RL objective to induce an 
 unsupervised specialization targeted solely at maximizing the performance of the whole population.
 
+<p align="center">
+    <a href="img/tsp.gif">
+        <img src="img/tsp.gif"width="50%"/>
+    </a>
+</p>
 
 ## Getting Started
 ### Installation
