@@ -169,4 +169,4 @@ ADD CITATION TO THE PAPER HERE
 ```
 
 ## Acknowledgements :pray:
-This research has been supported with TPUs from Google's TPU Research Cloud (TRC).
+This research has been supported with TPUs from [Google's TPU Research Cloud (TRC)](https://sites.research.google/trc/).
