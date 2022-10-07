@@ -27,7 +27,7 @@ unsupervised specialization targeted solely at maximizing the performance of the
 ## Getting Started :rocket:
 ### Installation
 _The test datasets are stored using [Git LFS](https://git-lfs.github.com/). Before cloning the repository, make sure 
-you have it installed. If you have already cloned it and need access to the evaluation files, run `git lfs fetch`._
+you have it installed. If you have already cloned it and need access to the evaluation files, run `git lfs fetch` and `git lfs pull`._
 
 A Dockerfile is provided to run the code. Currently, the installation uses [JAX](https://jax.readthedocs.io/en/latest/), 
 which enables to run our models seamlessly across different hardware (CPU, GPU, TPU). To build the Docker image, start a
