@@ -3,7 +3,7 @@
 ---
 
 This repository contains the official JAX implementation of the paper [Population-Based Reinforcement Learning for Combinatorial 
-Optimization Problems](LINK).
+Optimization](https://arxiv.org/abs/2210.03475).
 
 ---
 
@@ -165,7 +165,13 @@ where the parameters are like those for the greedy evaluation.
 ## Reference :pencil2:
 If you find this repository useful in your work, please use the following citation:
 ```
-ADD CITATION TO THE PAPER HERE
+@article{GrinsztajnFB22,
+  author    = {Grinsztajn, Nathan and Furelos-Blanco, Daniel and Barrett, Thomas D.},
+  title     = {Population-Based Reinforcement Learning for Combinatorial Optimization},
+  journal   = {CoRR},
+  volume    = {abs/2210.03475},
+  year      = {2022}
+}
 ```
 
 ## Acknowledgements :pray:
