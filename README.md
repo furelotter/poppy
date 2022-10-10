@@ -1,4 +1,4 @@
-# Poppy: Population-Based Reinforcement Learning for Combinatorial Optimization Problems
+# Poppy: Population-Based Reinforcement Learning for Combinatorial Optimization
 
 ---
 
