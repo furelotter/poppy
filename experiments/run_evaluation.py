@@ -55,16 +55,21 @@ def get_scores(trainer, problems):
         logging = fetch_from_devices(logging, as_numpy=True)
         logging["score_matrix"] = np.concatenate(logging["score_matrix"], axis=-1)
         return metrics, logging
+    return metrics, logging
 
 
-def get_scores_augmentation(trainer, problems):
-    problems_aug = jax.pmap(jax.vmap(trainer.get_augmentations))(problems)
-    problems_aug = jnp.swapaxes(
-        problems_aug, 0, 2
-    )  # devices, batch, augmentations, N, 2
-    problems_aug = jnp.swapaxes(
-        problems_aug, 1, 2
-    )  # augmentations, devices, batch, N, 2
+def get_scores_augmentation(num_devices, trainer, problems):
+    if num_devices > 1:
+        problems_aug = jax.pmap(jax.vmap(trainer.get_augmentations))(problems)  # devices, batch, augmentations, N, 2
+        problems_aug = jnp.swapaxes(
+            problems_aug, 0, 2
+        )  # augmentations, batch, devices, N, 2
+        problems_aug = jnp.swapaxes(
+            problems_aug, 1, 2
+        )  # augmentations, devices, batch, N, 2
+    else:
+        problems_aug = jax.vmap(trainer.get_augmentations)(problems)
+        problems_aug = jnp.swapaxes(problems_aug, 0, 1)  # augmentations, batch, N, 2
 
     loggings = []
     for problems in problems_aug:
@@ -200,5 +205,7 @@ if __name__ == "__main__":
     )
 
     # Compute the score and print it
-    score_matrix = get_scores_augmentation(trainer, spread_over_devices(test_data))
+    if n > 1:
+        test_data = spread_over_devices(test_data)
+    score_matrix = get_scores_augmentation(n, trainer, test_data)
     print(f"Evaluation Score: {score_matrix.max(0).mean()}")
