@@ -668,14 +668,20 @@ class TrainerBase(ABC):
         key = random.PRNGKey(self.config.seed)
         encoder_key, decoder_key, training_key, validation_key = random.split(key, 4)
 
+        saved_keys = None
         if self.config.load_checkpoint:
             with open(
                 os.path.join(self.config.load_checkpoint, "training_state.pkl"), "rb"
             ) as f:
                 saved_state = robust_load(f)
-                if self.config.load_decoder:
-                    # if loading the decoder, we also load the random keys
-                    saved_keys = saved_state.key
+                if self.config.load_decoder:  # If loading the decoder, we also load the random keys
+                    keys_shape = saved_state.key.shape
+                    if (
+                        (len(keys_shape) == 2 and keys_shape[0] == self.config.num_devices) or
+                        (len(keys_shape) == 1 and self.config.num_devices == 1)
+                    ):
+                        # If we use the same number of devices
+                        saved_keys = saved_state.key
                 saved_encoder, saved_decoder = hk.data_structures.partition(
                     lambda m, n, p: "shared_encoder" in m, saved_state.params
                 )
@@ -753,7 +759,7 @@ class TrainerBase(ABC):
             )
 
         # fancy: use the same random keys as in the checkpoint state
-        if self.config.load_checkpoint and self.config.load_decoder:
+        if saved_keys is not None:
             self.training_state.key = saved_keys
 
     def train(self, num_steps=100):  # noqa: CCR001
@@ -811,7 +817,13 @@ class TrainerBase(ABC):
                     ):
                         with open(self.checkpoint_path, "wb") as f:
                             if self.config.num_devices > 1:
-                                pickle.dump(fetch_from_first_device(self.training_state), f)
+                                # Just save a checkpoint for the first device (avoid useless copies) but keep the
+                                # random key in case a new execution starts from the set number of devices.
+                                first_device_training_state = fetch_from_first_device(self.training_state)
+                                first_device_training_state = first_device_training_state.replace(
+                                    key=self.training_state.key
+                                )
+                                pickle.dump(first_device_training_state, f)
                             else:
                                 pickle.dump(self.training_state, f)
                         with open(os.path.join(self.dir_name, "performance"), "w") as f:
