@@ -3,10 +3,10 @@ import setuptools
 setuptools.setup(
     name="poppy",
     version="0.0.1",
-    author="InstaDeep",
-    author_email="hello@instadeep.com",
+    author="anonymous",
+    author_email="anon@ymo.us",
     description="Poppy: Population-Based Reinforcement Learning for Combinatorial Optimization Problems",
-    url="https://github.com/instadeepai/poppy",
+    url="",
     packages=setuptools.find_packages(),
     python_requires='>=3.8'
 )
