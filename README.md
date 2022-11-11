@@ -1,13 +1,6 @@
 # Poppy: Population-Based Reinforcement Learning for Combinatorial Optimization
 
----
-
-This repository contains the official JAX implementation of the paper [Population-Based Reinforcement Learning for Combinatorial 
-Optimization](https://arxiv.org/abs/2210.03475).
-
----
-
-## Overview :hibiscus:
+## Overview
 Though applying reinforcement learning to combinatorial optimization is attractive, it is unrealistic to expect an agent 
 to solve these (often NP-)hard problems in a single shot due to their inherent complexity.
 Poppy is a method that uses a _population_ of agents with suitably diverse policies to improve the exploration of the
@@ -24,7 +17,7 @@ unsupervised specialization targeted solely at maximizing the performance of the
     <i>Figure 1: A diverse set of TSP solvers taking different routes in a given instance.</i>    
 </p>
 
-## Getting Started :rocket:
+## Getting Started
 ### Installation
 _The test datasets are stored using [Git LFS](https://git-lfs.github.com/). Before cloning the repository, make sure 
 you have it installed. If you have already cloned it and need access to the evaluation files, run `git lfs fetch` and `git lfs pull`._
@@ -161,17 +154,3 @@ The trained models can be tested using the `experiments/run_sampling.py` script 
 python experiments/run_sampling.py <env> <problem_size> <pop_size> <model_path>
 ```
 where the parameters are like those for the greedy evaluation.
-
-## Reference :pencil2:
-If you find this repository useful in your work, please use the following citation:
-```
-@article{grinsztajn2022poppy,
-  author    = {Grinsztajn, Nathan and Furelos-Blanco, Daniel and Barrett, Thomas D.},
-  title     = {Population-Based Reinforcement Learning for Combinatorial Optimization},
-  journal   = {arXiv preprint arXiv:2210.03475},
-  year      = {2022}
-}
-```
-
-## Acknowledgements :pray:
-This research has been supported with TPUs from [Google's TPU Research Cloud (TRC)](https://sites.research.google/trc/).
